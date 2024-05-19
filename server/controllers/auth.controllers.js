@@ -3,8 +3,9 @@ import generateTokenAndSetCookie from "../utils/generateToken.js";
 import bcrypt from 'bcrypt';
 
 export const signup = async (req, res) => {
-
+  
   try {
+    console.log("inside try block of signup")
     const { fullname, email, password, confirmPassword, gender } = req.body;
   
     if (password !== confirmPassword) {
@@ -12,6 +13,7 @@ export const signup = async (req, res) => {
     }
   
     const user = await User.findOne({ email });
+    console.log("user to be checked in db")
   
     if (user) {
       return res.status(400).json({ error: "User already exists" });
@@ -48,6 +50,9 @@ export const signup = async (req, res) => {
     else{
       res.status(400).json({ error: "User not created" });
     }
+
+    console.log("user created");
+    
   } catch (error) {
     console.log("Error in Signup Controller -", error.message);
     res.status(500).json({ error: "internal server error" });
