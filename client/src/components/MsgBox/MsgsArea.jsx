@@ -3,9 +3,11 @@ import { useAuthContext } from "../../context/AuthContext";
 import useConversation from "../../zustand/useConversation";
 import Messages from "./Messages";
 import useGetMessages from "../../hooks/useGetMessages";
+import useListenMsg from "../../hooks/useListenMsg";
 
 const MsgsArea = () => {
   const { loading, messages } = useGetMessages();
+  useListenMsg();
 
   const lastMessageRef = useRef();
   useEffect(() => {

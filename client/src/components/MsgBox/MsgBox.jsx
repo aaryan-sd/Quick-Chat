@@ -6,9 +6,13 @@ import { useAuthContext } from "../../context/AuthContext";
 import useConversation from "../../zustand/useConversation";
 import { IoChevronBack } from "react-icons/io5";
 import Conversation from "../Sidebar/Conversation";
+import { useSocketContext } from "../../context/SocketContext";
 
 const MsgBox = () => {
   const { selectedConversation, setSelectedConversation } = useConversation();
+  const {onlineUsers} = useSocketContext();
+  // const isOnline = onlineUsers.includes(conversation._id);
+
   useEffect(() => {
     return () => setSelectedConversation(null);
   }, [setSelectedConversation]);
@@ -16,7 +20,7 @@ const MsgBox = () => {
   const handleBackButton = () => {
     setSelectedConversation(null);
   };
-
+  
   return (
     <div className="h-[600px] bg-gray-700 ml-4 p-4 rounded-2xl shadow-md w-[550px]">
       {!selectedConversation ? (
