@@ -16,30 +16,37 @@ const useSignUp = () => {
     setLoading(true);
     setError(null);
     try {
-        const res = await axios.post('http://localhost:8000/api/auth/signup', {
-            fullname,
-            email,
-            password,
-            confirmPassword,
-            gender
-          }, {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          });
-
-        const data = await res.data;
-        
-        if(data.error){
-            throw new Error(data.error)
-        }
-
-        localStorage.setItem('chat-user', JSON.stringify(data));
-        setAuthUser(data);
-        toast.success('Account created successfully');
-        console.log("acct created successfully");
-
-    } catch (error) {
+      const res = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          fullname,
+          email,
+          password,
+          confirmPassword,
+          gender
+        })
+      });
+    
+      if (!res.ok) {
+        // Handle HTTP errors
+        const errorData = await res.json();
+        throw new Error(errorData.error || `HTTP error! status: ${res.status}`);
+      }
+    
+      const data = await res.json();
+      
+      if (data.error) {
+        throw new Error(data.error);
+      }
+    
+      localStorage.setItem('chat-user', JSON.stringify(data));
+      setAuthUser(data);
+      toast.success('Account created successfully');
+      console.log("acct created successfully");
+    }catch (error) {
         toast.error(error.message);
         setError(error.message, 'An error occurred during signup');
     } finally {

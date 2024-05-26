@@ -15,24 +15,28 @@ const useLogin = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/auth/login",
-        {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
           email,
           password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      const data = response.data;
-
+        }),
+      });
+    
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+      }
+    
+      const data = await response.json();
+    
       if (data.error) {
         throw new Error(data.error);
       }
+    
       localStorage.setItem("chat-user", JSON.stringify(data));
       setAuthUser(data);
       toast.success("Logged in successfully");

@@ -1,18 +1,23 @@
-import React from 'react'
+import React from "react";
+import useConversation from "../../zustand/useConversation";
 
-const Conversation = () => {
+const Conversation = ({ conversation }) => {
+  const { selectedConversation, setSelectedConversation } = useConversation();
+  const isSelected = selectedConversation?._id === conversation._id;
+
+  
+
   return (
     <>
-        <div className='flex items-center gap-4'>
-          <div className='avatar online w-12 h-12 rounded-full ml-2'>
-              <img src='https://avatar.iran.liara.run/public/boy' alt="Profile"/>
-          </div>
-          <div>Jimmy Anderson</div>
-        
+      <div className={`flex items-center gap-4 hover:bg-blue-600 rounded py-1 cursor-pointer ${isSelected ? "bg-blue-600" : "" }`} onClick={() => {setSelectedConversation(conversation)}}>
+        <div className={`avatar w-12 h-12 rounded-full ml-2`}>
+          <img src={conversation.profilePic} alt="Profile" />
         </div>
-        <div className="divider divider-neutral m-2"></div>
+        <div>{conversation.fullname}</div>
+      </div>
+      <div className="divider divider-neutral m-1"></div>
     </>
-  )
-}
+  );
+};
 
-export default Conversation
+export default Conversation;

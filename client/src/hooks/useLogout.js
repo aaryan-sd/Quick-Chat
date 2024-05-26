@@ -10,18 +10,11 @@ const useLogout = () => {
   const logout = async () => {
     setLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/auth/logout",
-        {},
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      const data = response.data;
-
+      const res = await fetch("/api/auth/logout", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+      });
+      const data = await res.json();
       if (data.error) {
         throw new Error(data.error);
       }
