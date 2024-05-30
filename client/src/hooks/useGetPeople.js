@@ -9,7 +9,7 @@ const useGetPeople = () => {
     const getPeople = async () => {
       setLoading(true);
       try {
-        const res = await fetch("https://quickchat-ig1q.onrender.com/api/users");
+        const res = await fetch("/api/users");
 
         const data = await res.json();
 

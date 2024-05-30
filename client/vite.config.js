@@ -9,6 +9,7 @@ export default defineConfig({
     proxy:{
       "/api": {
         target: 'https://quickchat-ig1q.onrender.com',
+        changeOrigin: true,
       },
     },
   },
