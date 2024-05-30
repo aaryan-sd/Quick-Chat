@@ -50,7 +50,7 @@ const SignUp = () => {
             <label className="block text-sm font-medium text-gray-400">Email</label>
             <input
               type="email"
-              className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
+              className="bg-[#1b2831] w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter your email"
               value={inputs.email}
               onChange={(e) => {
@@ -74,7 +74,7 @@ const SignUp = () => {
             <label className="block text-sm font-medium text-gray-400">Confirm Password</label>
             <input
               type="password"
-              className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
+              className="bg-[#1b2831] w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
               placeholder="Confirm your password"
               value={inputs.confirmPassword}
               onChange={(e) => {
@@ -83,7 +83,7 @@ const SignUp = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Gender</label>
+            <label className="block text-sm font-medium text-gray-400">Gender</label>
             <div className="mt-2 space-x-4">
               <label className="inline-flex items-center">
                 <input
@@ -116,7 +116,7 @@ const SignUp = () => {
           {/* <p className='flex justify-center'>Already have an Account? <a href="/login" className="text-blue-500">Login</a></p> */}
           <Link
               to="/login"
-              className="text-base hover:underline font-medium hover:text-blue-600 mt-1 inline-block text-black"
+              className="text-base font-medium  hover:text-blue-400  mt-1 inline-block text-gray-400"
             >
               Already have an account? 
             </Link>

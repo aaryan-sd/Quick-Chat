@@ -21,6 +21,7 @@ const Profile = () => {
         <div>
           <div className=" text-lg text-black font-semibold">{profile.fullname}</div>
         </div>
+        
         <div className=" text-red-950">
           <button onClick={logout}>
           <BiLogOut size={24}/>

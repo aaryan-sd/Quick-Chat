@@ -1,17 +1,16 @@
 import React, { useEffect } from "react";
-import ConversationName from "./ConversationName";
 import MsgsArea from "./MsgsArea";
 import MsgTypeArea from "./MsgTypeArea";
 import { useAuthContext } from "../../context/AuthContext";
 import useConversation from "../../zustand/useConversation";
 import { IoChevronBack } from "react-icons/io5";
-import Conversation from "../Sidebar/Conversation";
 import { useSocketContext } from "../../context/SocketContext";
+import { TiMessages } from "react-icons/ti";
 
 const MsgBox = () => {
   const { selectedConversation, setSelectedConversation } = useConversation();
   const {onlineUsers} = useSocketContext();
-  // const isOnline = onlineUsers.includes(conversation._id);
+  //const isOnline = onlineUsers.includes(conversation._id);
 
   useEffect(() => {
     return () => setSelectedConversation(null);
@@ -22,7 +21,7 @@ const MsgBox = () => {
   };
   
   return (
-    <div className="h-[600px] bg-gray-700 ml-4 p-4 rounded-2xl shadow-md w-[550px]">
+    <div className={`${selectedConversation ? 'flex' : 'hidden sm:flex'} flex w-[350px] sm:w-[320px] md:w-[350px]  lg:w-[550px] flex-col bg-gray-700 sm:ml-4 p-4 rounded-2xl shadow-md `}>
       {!selectedConversation ? (
         <NoChatSelected />
       ) : (
@@ -40,7 +39,7 @@ const MsgBox = () => {
                 />
                 <div className="ml-4">
                   <div className="text-sm font-semibold">{selectedConversation.fullname}</div>
-                  <div className="text-[0.7rem]">Online</div>
+                  
                 </div>
               </div>
             </div>
@@ -50,10 +49,8 @@ const MsgBox = () => {
             <MsgsArea />
           </div>
 
-          {/* Message Typing Bar and Send Button */}
-          <div className="flex">
-            <MsgTypeArea />
-          </div>
+          <MsgTypeArea />
+
         </>
       )}
     </div>
@@ -69,6 +66,7 @@ const NoChatSelected = () => {
       <div className="text-center text-gray-400 font-bold">
         <p>Welcome! {authUser?.fullname}</p>
         <p>Select a chat to start chatting</p>
+        <TiMessages className="text-3xl ml-20 md:text-6xl text-center" />
       </div>
     </div>
   );

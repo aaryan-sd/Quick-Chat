@@ -12,18 +12,18 @@ const MsgTypeArea = () => {
     setMessage("");
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="px-4 my-3">
       <div className="w-full relative bg-gray-800 rounded-3xl">
         <input
           type="text"
-          className="w-[450px] flex-1 bg-gray-800 outline-none rounded-3xl p-2 mr-2"
+          className="w-full  bg-gray-800 outline-none rounded-3xl p-2 mr-2"
           placeholder="Type your message..."
           value={message}
           onChange={(e) => {
             setMessage(e.target.value);
           }}
         />
-        <button className="absolute text-blue-400 px-4 py-2 rounded-lg">
+        <button className="absolute text-blue-400 end-0 inset-y-0 rounded-lg p-2">
           {loading ? <div className="loading loading-spinner"></div> : <FiSend size={25} />}
         </button>
       </div>

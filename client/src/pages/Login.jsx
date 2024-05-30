@@ -45,7 +45,7 @@ const Login = () => {
           </div>
           <Link
               to="/signup"
-              className="text-base hover:underline font-medium hover:text-blue-600 mt-1 inline-block text-black"
+              className="text-base font-medium hover:text-blue-400 mt-1 inline-block text-gray-400"
             >
               Create New Account 
             </Link>
