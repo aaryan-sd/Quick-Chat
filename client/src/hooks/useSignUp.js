@@ -2,7 +2,6 @@ import {useState} from 'react'
 import toast from 'react-hot-toast';
 import { useAuthContext } from '../context/AuthContext';
 import axios from 'axios';
-const baseURL = process.env.BASE_URL;
 
 const useSignUp = () => {
   const [loading, setLoading] = useState(false);
@@ -17,7 +16,7 @@ const useSignUp = () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('https://quickchat-ig1q.onrender.com/api/auth/signup', {
+      const res = await fetch('/api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

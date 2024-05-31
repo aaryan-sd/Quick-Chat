@@ -1,7 +1,6 @@
 import { useState } from "react";
 import useConversation from "../zustand/useConversation";
 import toast from "react-hot-toast";
-const baseURL = process.env.BASE_URL;
 
 const useSendMessage = () => {
 	const [loading, setLoading] = useState(false);
@@ -10,7 +9,7 @@ const useSendMessage = () => {
 	const sendMessage = async (message) => {
 		setLoading(true);
 		try {
-			const res = await fetch(`https://quickchat-ig1q.onrender.com/api/messages/send/${selectedConversation._id}`, {
+			const res = await fetch(`/api/messages/send/${selectedConversation._id}`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
