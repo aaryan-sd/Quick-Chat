@@ -10,7 +10,7 @@ app.use(cors());
 
 const io = new Server(server, {
   cors: {
-    origin: "https://quickchat-asd.netlify.app",
+    origin: "*",
     methods: ["GET", "POST"], 
   },
 });

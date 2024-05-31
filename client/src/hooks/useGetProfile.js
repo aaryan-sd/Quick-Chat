@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
+const baseURL = process.env.BASE_URL;
 
 const useGetProfile = () => {
   const [profile, setProfile] = useState([]);
@@ -10,7 +11,7 @@ const useGetProfile = () => {
     const getProfile = async () => {
       try {
         setDpLoading(true);
-        const res = await fetch("/api/users/getLoggedInUser");
+        const res = await fetch("https://quickchat-ig1q.onrender.com/api/users/getLoggedInUser");
 
         const data = await res.json();
 

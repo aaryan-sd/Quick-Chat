@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
+const baseURL = process.env.BASE_URL;
 
 const useGetPeople = () => {
   const [loading, setLoading] = useState(false);
@@ -9,7 +10,7 @@ const useGetPeople = () => {
     const getPeople = async () => {
       setLoading(true);
       try {
-        const res = await fetch("/api/users");
+        const res = await fetch("https://quickchat-ig1q.onrender.com/api/users");
 
         const data = await res.json();
 
