@@ -31,7 +31,7 @@ const SignUp = () => {
   return (
     <>
       <div className="w-full max-w-md  p-8 space-y-4 bg-[#222831] rounded-lg shadow-md ">
-        <h2 className="text-2xl font-bold text-center">Sign Up</h2>
+        <h2 className="text-2xl font-bold text-center">Sign Up QuickChat</h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
           {error && <p className="text-red-500 text-sm">{error}</p>}
           <div>

@@ -20,7 +20,7 @@ const Profile = () => {
       <div className="bg-[#7480ff] rounded-full flex p-4 w-full justify-between items-center">
         <div>
           <div className=" text-lg text-black font-semibold">
-            {profile.fullname}
+            Hey! {profile.fullname}
           </div>
         </div>
 
